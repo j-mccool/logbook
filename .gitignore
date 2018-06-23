@@ -1,6 +1,7 @@
 .gradle
 /build/
-!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.
+
 
 ### STS ###
 .apt_generated
@@ -25,3 +26,6 @@
 /nbdist/
 /.nb-gradle/
 src/main/resources/static/
+src/main/resources/applicatoin.properties
+airports.csv
+logbook.csv
