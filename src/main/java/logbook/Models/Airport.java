@@ -1,35 +1,39 @@
 package logbook.Models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Airport {
 
     @Id
-    @GeneratedValue
     private int id;
 
     @NotNull
-    private String name;
+    private int worldcode;
 
     @NotNull
     private String code;
 
     @NotNull
-    private String city;
+    private String location;
 
     @NotNull
     private String country;
 
+    @OneToMany
+    private List<Flight> flights = new ArrayList<>();
+
     public Airport() {}
 
-    public Airport(String name, String code, String city, String country) {
-        this.name = name;
+    public Airport(@NotNull int worldcode, @NotNull String code, @NotNull String location, @NotNull String country) {
+        this.worldcode = worldcode;
         this.code = code;
-        this.city = city;
+        this.location = location;
         this.country = country;
     }
 
@@ -37,12 +41,12 @@ public class Airport {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public int getWorldcode() {
+        return worldcode;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWorldCode(int worldAreaCode) {
+        this.worldcode = worldcode;
     }
 
     public String getCode() {
@@ -53,12 +57,12 @@ public class Airport {
         this.code = code;
     }
 
-    public String getCity() {
-        return city;
+    public String getLocation() {
+        return location;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getCountry() {

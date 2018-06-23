@@ -1,15 +1,14 @@
 package logbook.Models;
 
-import logbook.Models.Aircraft;
-import logbook.Models.Airport;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-public class Flights {
+public class Flight {
 
     @Id
     @GeneratedValue
@@ -22,31 +21,31 @@ public class Flights {
     private double duration;
 
     @NotNull
-    private Airport origin;
-
-    @NotNull
-    private Airport destination;
-
-    @NotNull
     private String remarks;
 
+    @NotNull
     private String coPilot;
 
+    @NotNull
     private String instructor;
 
+    @ManyToOne
     private Aircraft aircraft;
 
-    public Flights() {}
+    @ManyToOne
+    private Airport origin;
 
-    public Flights(Date date, double duration, Airport origin, Airport destination, String remarks, String coPilot, String instructor, Aircraft aircraft) {
+    @ManyToOne
+    private Airport destination;
+
+    public Flight() {}
+
+    public Flight(Date date, double duration, String remarks, String coPilot, String instructor) {
         this.date = date;
         this.duration = duration;
-        this.origin = origin;
-        this.destination = destination;
         this.remarks = remarks;
         this.coPilot = coPilot;
         this.instructor = instructor;
-        this.aircraft = aircraft;
     }
 
     public int getId() {
