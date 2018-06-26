@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${aircraft} and ${aircraft.size()}">Empty Hangar :(</p>
+
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Engines</th>
+        <th>Tail ID</th>
+        <th>Edit</th>
+    </tr>
+
+    <tr th:each="plane : ${aircraft}">
+        <td th:text="${plane.name}"></td>
+        <td th:text="${plane.type}"></td>
+        <td th:text="${plane.engines}"></td>
+        <td th:text="${plane.tailId}"></td>
+        <td><a th:href="@{'/aircraft/edit/' + ${plane.id}}">Edit</a></td>
+    </tr>
+
+</table>
+<a href="/aircraft/add">Add</a> | <a href="/aircraft/remove">Remove</a>
+</body>
+</html>

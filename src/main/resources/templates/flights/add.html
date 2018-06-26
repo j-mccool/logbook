@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" style="max-width:600px;" th:object="${flight}">
+    <div class="form-group">
+        <label th:for="date">Date</label>
+        <input class="form-control" th:field="*{date}" />
+        <span th:errors="*{date}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="origin">Origin</label>
+        <select name="origin">
+            <option th:each="airport : ${airports}"
+                    th:text="${airport.code}"
+                    th:value="${airport.id}"></option>
+        </select>`
+        <span th:errors="*{origin}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="destination">Destination</label>
+        <select name="destination">
+            <option th:each="airport : ${airports}"
+                    th:text="${airport.code}"
+                    th:value="${airport.id}"></option>
+        </select>`
+        <span th:errors="*{destination}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="duration">Duration</label>
+        <input class="form-control" th:field="*{duration}">`
+        <span th:errors="*{duration}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="aircraft">Aircraft</label>
+        <select name="aircraftId">
+            <option th:each="plane : ${aircraft}"
+                    th:text="${plane.name + ', ' + plane.tailId}"
+                    th:value="${plane.id}"></option>
+        </select>`
+        <span th:errors="*{origin}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="coPilot">CoPilot</label>
+        <input class="form-control" th:field="*{coPilot}">`
+        <span th:errors="*{coPilot}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="instructor">Instructor</label>
+        <input class="form-control" th:field="*{instructor}">`
+        <span th:errors="*{instructor}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="remarks">Remarks</label>
+        <input class="form-control" th:field="*{remarks}">
+        <span th:errors="*{remarks}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add Flight" />
+</form>
+
+</body>
+</html>

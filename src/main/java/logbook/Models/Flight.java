@@ -52,11 +52,11 @@ public class Flight {
         return id;
     }
 
-    public logbook.Models.Aircraft getAircraft() {
+    public Aircraft getAircraft() {
         return aircraft;
     }
 
-    public void setAircraft(logbook.Models.Aircraft aircraft) {
+    public void setAircraft(Aircraft aircraft) {
         this.aircraft = aircraft;
     }
 

@@ -1,6 +1,7 @@
 package logbook.Controllers;
 
 
+import logbook.Models.Aircraft;
 import logbook.Models.data.AirportDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,4 +31,5 @@ public class LogController {
 
         return "logbook/airports";
     }
+
 }
